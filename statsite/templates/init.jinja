@@ -1,0 +1,13 @@
+description "statsite"
+
+start on (local-filesystems and net-device-up IFACE=lo)
+stop on net-device-down IFACE=lo
+
+chdir {{ install_dir }}
+
+setuid {{ user }}
+setgid {{ group }}
+
+respawn
+
+exec /usr/bin/statsite -f {{ conf_dir }}/statsite.ini

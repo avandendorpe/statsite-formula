@@ -1,0 +1,14 @@
+{% from "statsite/map.jinja" import statsite with context -%}
+[statsite]
+{% for key, value in statsite.config.statsite.iteritems() -%}
+{{ key }} = {{ value }}
+{% endfor -%}
+
+{% for histogram in statsite.get('config:histograms', {}) %}
+
+[{{ histogram.name }}]
+prefix = {{ histogram.prefix }}
+min = {{ histogram.min }}
+max = {{ histogram.max }}
+width = {{ histogram.width }}
+{% endfor -%}

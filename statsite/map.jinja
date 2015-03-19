@@ -1,0 +1,13 @@
+{% set statsite = salt['grains.filter_by']({
+    'Debian': {
+        'pkg_name': 'statsite',
+        'pkg_source': 'salt://statsite/debs/statsite_0.7.0_amd64.deb',
+        'service': 'statsite',
+        'user': 'statsite',
+        'group': 'statsite',
+        'install_dir': '/opt/statsite',
+        'conf_dir': '/etc/statsite',
+        'log_dir': '/var/log/statsite',
+        'pid': '/var/run/statsite.pid'
+    },
+}, merge=salt['pillar.get']('statsite:lookup'), default='Debian') %}
