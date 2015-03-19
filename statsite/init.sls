@@ -7,8 +7,8 @@ statsite:
     - empty_password: true
     - system: true
   pkg.installed:
-    - name: {{ statsite.pkg_name }}
-    - source: {{ statsite.pkg_source }}
+    - sources:
+      - {{ statsite.pkg_name }}: {{ statsite.pkg_source }}
 
 statsite-config:
   file.managed:

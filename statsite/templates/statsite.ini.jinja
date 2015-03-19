@@ -1,4 +1,4 @@
-{% from "statsite/map.jinja" import statsite with context -%}
+{% set statsite = salt['pillar.get']('statsite') -%}
 [statsite]
 {% for key, value in statsite.config.statsite.iteritems() -%}
 {{ key }} = {{ value }}
